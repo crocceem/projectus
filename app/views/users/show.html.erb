@@ -1,0 +1,24 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+
+      <h3>Current role:</h3>
+
+      <%= @user.current_role %>
+
+       <h3>Your roles:</h3>
+      <ul>
+        <% @user.roles.each do |role|%>
+            <li><%=role.role%></li>
+        <%end%>
+      </ul>
+      <%= link_to "Change your current role",edit_user_path(current_user)%><br>
+      <%= link_to "Add new role",'#'%>
+    </section>
+  </aside>
+</div>

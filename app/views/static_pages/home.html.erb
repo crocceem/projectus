@@ -1,0 +1,50 @@
+<% provide(:title,"Home")%>
+
+<div class="row">
+  <div class="jumbotron">
+    <h1>Welcome to ProjectUS</h1>
+    <p>
+      ProjectUS is a software project management application that uses the Scrum framework.
+      It has been developed by the eXit research group from the Université de Sherbrooke.
+      For more information on how to use ProjectUS, download the
+      <%=link_to "Capsule Scrum ProjectUS",'#'%>
+      </p>
+    <p>
+      If you want to know more about the Scrum framework, read :<%= button_to('Scrum Guides','http://www.scrum.org/Scrum-Guides',class:'btn btn-primary')%>
+    </p>
+  </div>
+  <div class="col-md-4">
+    <h3>
+      First Use
+    </h3>
+    <p>  The first time that you use ProjectUS, There is a tutorial which allows you to setup your project.
+      From the creation of the team until start the first sprint.
+    </p>
+    <ul>
+      <li>Only the project administrator can assign members to a team.</li>
+      <li>Only the Product Owner can create a release et add entries to the backlog.</li>
+      <li>Only the Scrum Master can add task to the sprint and start the sprint.</li>
+      <li>Normal Sprint, all registered developers can take a task and log the time for this task.</li>
+      <li>Then go back to step corresponding of the current need.</li>
+
+    </ul>
+  </div>
+  <div class="container">
+  <div class="col-md-4">
+    <h3>
+      FAQ
+    </h3>
+    <p>
+      There is an Frequent asked questions. Inside ProjectUS, you can interact with ProjectUS Team to facilitate your work.
+    </p>
+  </div>
+  <div class="col-md-4 col-offset-2">
+    <h3>External Use</h3>
+    <p>
+      ProjectUS is currently used in software projects at the Université de Sherbrooke.
+      If you want to take a look, please contact us.
+      <%=link_to "Contact us",contact_path %>
+    </p>
+  </div>
+  </div>
+</div>
