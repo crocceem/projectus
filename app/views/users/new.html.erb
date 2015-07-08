@@ -22,11 +22,13 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class:'form-control' %>
 
-        <%= fields_for(@roles_user) do |ru| %>
+        <%= f.label :all_roles %>
+        <%= collection_select(:user,:current_role,@all_roles, :id, :role,)%>
 
-        <%= ru.label :all_roles %>
-        <%= collection_select(:roles,:id,@all_roles, :id, :role,{},{multiple: true})%>
-        <%end%>
+        <%=f.label :all_projects %>
+        <%= collection_select(:user,:current_project,@all_projects,:id,:name)%>
+
+
 
         <%=f.submit "Create your account", class: "btn btn-primary"%>
     <%end%>

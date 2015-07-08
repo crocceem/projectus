@@ -7,17 +7,23 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class:"gravatar")
   end
 
-  def is_admin?(user)
-    user.current_role.downcase == "administrateur"
+  def role_user(user)
+    user.assignements.each do |assignement|
+      if assignement.active
+       return assignement.role.role
+      end
+    end
   end
 
-  def is_dev?(user)
-    user.current_role.downcase == "developpeur"
+  def project_user(user)
+    user.assignements.each do |assignement|
+      if assignement.active
+       return assignement.project.name
+      end
+    end
   end
 
-  def is_super?(user)
-    user.current_role.downcase == "superviseur"
-  end
+
 
 
 

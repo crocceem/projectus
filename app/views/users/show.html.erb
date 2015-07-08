@@ -9,16 +9,26 @@
 
       <h3>Current role:</h3>
 
-      <%= @user.current_role %>
+      <%= @assignement.role.role %>
 
-       <h3>Your roles:</h3>
+      <h3>Current project:</h3>
+
+      <%= @assignement.project.name %>
+
+      <br><br>
+
+      <%= link_to "Change your current affectation",'#'%><br>
+      <%= link_to "Add new role",'#'%>
+
+        <h3>Your roles and projects: </h3>
       <ul>
-        <% @user.roles.each do |role|%>
-            <li><%=role.role%></li>
+        <% @user.assignements.each do |assignement| %>
+            <li>Role: <%=assignement.role.role%> / Projet: <%=assignement.project.name%></li>
+
         <%end%>
       </ul>
-      <%= link_to "Change your current role",edit_user_path(current_user)%><br>
-      <%= link_to "Add new role",'#'%>
+
+      Role : <%= role_user(@user)%>
     </section>
   </aside>
 </div>

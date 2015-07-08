@@ -5,24 +5,27 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @all_roles = Role.all
-    @roles_user = @user.roles_users.build
+    @all_projects = Project.all
+
   end
 
   def show
     @user = User.find(params[:id])
-
+     @user.assignements.each do |assignement|
+       if assignement.active
+         @assignement = assignement
+       end
+     end
   end
 
   def create
 
     @user = User.new(user_params)
-
-    params[:roles][:id].each do |role|
-      if !role.empty?
-        @user.roles_users.build(:role_id => role)
-      end
-    end
     if @user.save
+      @user.assignements.create(role_id:@user.current_role,
+                                project_id:@user.current_project,
+                                active:true)
+
       flash[:success] = "Welcome to ProjectUS"
       redirect_to @user
     else
@@ -48,7 +51,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name,:email,:cip,:password,:password_confirmation,:current_role)
+    params.require(:user).permit(:name,:email,:cip,:password,:password_confirmation,:current_role,:current_project)
   end
 
   # Before filters

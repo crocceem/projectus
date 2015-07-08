@@ -1,0 +1,21 @@
+<% provide(:title,"Affectation")%>
+
+<h1>Affectations</h1>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 ">
+    <%= form_for @assignement do |f| %>
+
+        <%= f.label :users %>
+        <%= collection_select(:assignement,:user_id,@all_users,:id,:name)%>
+
+        <%= f.label :roles %>
+        <%= collection_select(:assignement,:role_id,@all_roles, :id, :role)%>
+
+        <%= f.label :projects %>
+        <%= collection_select(:assignement,:project_id,@all_projects, :id, :name)%>
+
+        <%= f.submit "Update affectations", class:'btn btn-primary'%>
+    <%end%>
+  </div>
+</div>

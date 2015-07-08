@@ -4,19 +4,13 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-            <% if is_admin?(current_user)%>
-                <li><%=link_to "Connected as administator",edit_user_path(current_user) %></li>
-            <%end%>
 
-            <% if is_dev?(current_user)%>
-                <li><%=link_to "Connected as developer",edit_user_path(current_user) %></li>
-            <%end%>
-
-            <%if is_super?(current_user)%>
-                <li><%=link_to "Connected as supervisor",edit_user_path(current_user) %></li>
-            <%end%>
-
+            <% role =role_user(current_user) %>
+            <% project = project_user(current_user) %>
+            <li><%=link_to role+project,'#'%></li>
+            <li><%=link_to "Affectations",affectation_path%></li>
             <li><%=link_to "Users",'#' %></li>
+
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>

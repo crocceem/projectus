@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706190254) do
+ActiveRecord::Schema.define(version: 20150708202508) do
+
+  create_table "assignements", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "active"
+  end
+
+  add_index "assignements", ["project_id"], name: "index_assignements_on_project_id"
+  add_index "assignements", ["role_id"], name: "index_assignements_on_role_id"
+  add_index "assignements", ["user_id", "role_id", "project_id"], name: "index_assignements_on_user_id_and_role_id_and_project_id", unique: true
+  add_index "assignements", ["user_id"], name: "index_assignements_on_user_id"
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "role",       null: false
@@ -35,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150706190254) do
     t.string   "password_digest"
     t.string   "remember_digest"
     t.string   "current_role"
+    t.string   "current_project"
   end
 
   add_index "users", ["cip"], name: "index_users_on_cip", unique: true

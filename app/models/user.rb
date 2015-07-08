@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
 
   has_many :roles_users
   has_many :roles, :through => :roles_users
+  has_many :assignements, class_name: "Assignement",
+                                 foreign_key: "user_id",
+                                 dependent: :destroy
+
+  has_many :rolesusers, through: :active_assignements, source: :role
 
   attr_accessor :remember_token
 
@@ -60,5 +65,17 @@ class User < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest,nil)
   end
+
+  # Assigne un role à un user
+  def assigne_job(role,project)
+    assigmenents.create(role_id: role,project_id: project)
+  end
+
+  # Delete assignement for a user
+  def unassigne_job(role,project)
+    assignements.create(role_id:role,project_id:project).destroy
+  end
+
+
 
 end
