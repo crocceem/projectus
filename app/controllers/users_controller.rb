@@ -48,6 +48,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def assignement
+    @user=User.find(params[:id])
+    @assignements = @user.assignements
+  end
+
   private
 
   def user_params

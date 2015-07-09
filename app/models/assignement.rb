@@ -21,4 +21,6 @@ class Assignement < ActiveRecord::Base
   validates :user_id, presence:true
   validates :role_id, presence:true
   validates :project_id, presence:true
+
+
 end

@@ -7,7 +7,7 @@
 
             <% role =role_user(current_user) %>
             <% project = project_user(current_user) %>
-            <li><%=link_to role+project,'#'%></li>
+            <li><%=link_to role+project,assignements_user_path(current_user)%></li>
             <li><%=link_to "Affectations",affectation_path%></li>
             <li><%=link_to "Users",'#' %></li>
 

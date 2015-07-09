@@ -8,13 +8,11 @@
 
 user = User.create!(name:"Emmanuel Croccel",cip:"croe1801",
                    email:"manu@outlook.fr",password:"foobar",
-                   password_confirmation:"foobar",current_role:"superviseur",
-                   current_project:"Projectus")
+                   password_confirmation:"foobar")
 
 user2 = User.create!(name:"Example Test",cip:"test1801",
                     email:"test@foobar.fr",password:"foobar",
-                    password_confirmation:"foobar",current_role:"administrateur",
-                    current_project:"Pegasus")
+                    password_confirmation:"foobar")
 
 
 
@@ -31,4 +29,6 @@ user.roles_users.create!(role_id: superv.id)
 user.roles_users.create!(role_id: dev.id)
 
 user.assignements.create!(role_id: superv.id, project_id: projectus.id,active:true)
+user.assignements.create!(role_id: admin.id, project_id: projectus.id,active:false)
 user2.assignements.create!(role_id: admin.id, project_id: pegasus.id,active:true)
+user2.assignements.create!(role_id: admin.id, project_id: projectus.id,active:false)

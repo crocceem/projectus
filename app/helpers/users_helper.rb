@@ -10,7 +10,7 @@ module UsersHelper
   def role_user(user)
     user.assignements.each do |assignement|
       if assignement.active
-       return assignement.role.role
+        return assignement.role.role
       end
     end
   end
@@ -18,13 +18,10 @@ module UsersHelper
   def project_user(user)
     user.assignements.each do |assignement|
       if assignement.active
-       return assignement.project.name
+        return assignement.project.name
       end
     end
   end
-
-
-
 
 
 end

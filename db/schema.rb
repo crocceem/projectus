@@ -54,8 +54,6 @@ ActiveRecord::Schema.define(version: 20150708202508) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.string   "current_role"
-    t.string   "current_project"
   end
 
   add_index "users", ["cip"], name: "index_users_on_cip", unique: true
